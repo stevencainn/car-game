@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Car JS</title>
+</head>
+<body>
+
+    <h1>My First Car Adventure!!</h1>
+    <h2>Type "h" to honk your horn, "d" to drive to tacobell, "w" to go on a cross country trip, or "t" to get your car's oil changed</h2>
+    <h2>See Console for Car Stats</h2>
+    
+    <script>
+    // declaring my variables
+
+    var car = {
+        make: "Nissan",
+        model: "GTR",
+        color: "Pearl White",
+        mileage: 2500,
+        isWorking: true,
+    
+    // ? for teacher  are they using this specifically or making that name up?
+
+        driveToTacobell: function() {
+        alert("Old Mileage: " + this.mileage)
+        this.mileage = this.mileage + 50;
+        alert("New Mileage: " + this.mileage);
+        },
+    
+        driveCrossCountry: function() {
+        alert("Old Mileage: " + this.mileage)
+        this.mileage = this.mileage + 5000;
+        alert("New Mileage: " + this.mileage);
+        alert("Car Needs Oil Change And Tune Up");
+        this.isWorking = false;
+        },
+    
+        getOilChange: function() {
+        alert("Car Is Ready To Drive");
+        this.isWorking = true;
+        },
+
+        honk: function() {
+        alert("Beep! Beep!")
+        }
+    }
+    
+    // console logging all current car stats using reWriteStats function to re-run log after main function has completed.
+
+    function reWriteStats(){
+        console.log("Make: " + car.make);
+        console.log("Model: " + car.model);
+        console.log("Color: " + car.color);
+        console.log("Mileage: " + car.mileage);
+        console.log("Is Working: " + car.isWorking);
+        console.log("----------------");
+    }
+
+    //Main Process! onkeyup captures keyboard input, depending on the letter pressed it will execute(call) different functions
+    //Using toLowerCase function to convert letter to lowercase no matter what 
+
+    document.onkeyup = function(event){
+        
+        var letter = event.key.toLowerCase();
+
+        if (letter === "h") { // if letter is h, run function honk
+            car.honk();
+            reWriteStats(); // used to relog data
+        }
+
+        if (letter === "d"){ // if letter is d run function drive to taco bell
+            car.driveToTacobell(); 
+            reWriteStats();
+        }
+
+        if (letter === "w") { // if letter is w run function drive cross country
+            car.driveCrossCountry();
+            reWriteStats();
+        }
+
+        if (letter === "t") {
+            car.getOilChange();
+            reWriteStats();
+        }
+    };
+
+    
+    
+    </script>
+
+
+
+
+
+</body>
+</html>
